@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기 소개 페이지</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>PROFILE</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main>
+
+        <!-- About -->
+        <section id="about">
+            <h2>About Me</h2>
+
+            <p>
+                중부대학교 정보보호학과 재학 <br>
+                웹 개발 & 디자인 공부를 위한 데모 작업 중
+            </p>
+
+            <button id="moreBtn">더 알아보기</button>
+
+            <p id="hid-txt">
+                할 수 있다.
+            </p>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>Skills</h2>
+
+            <p>해당 기술들의 기초를 사용하여 제작</p>
+
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+
+            <p>2024.03 ~ 2026.06</p>
+
+            <!-- Project Slider -->
+            <div class="slider">
+
+                <!-- 이전 버튼 -->
+                <button
+                    id="prev-Btn"
+                    class="slider-btn"
+                    aria-label="이전 프로젝트">
+                    ←
+                </button>
+
+                <!-- 프로젝트 카드 -->
+                <div class="pjt-container">
+                    <div class="pjt-card">
+                        <span id="pjt-Number">
+                            PROJECT 01
+                        </span>
+
+                        <h3 id="pjt-Title">
+                            Project Title
+                        </h3>
+
+                        <p id="pjt-Description">
+                            Project Desc
+                        </p>
+
+                        <p id="pjt-Skill">
+                            Use Skill
+                        </p>
+
+                        <a 
+                            id="pjt-Link"
+                            href="#"
+                            target="_blank">
+                            Go Project →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 다음 버튼 -->
+                <button
+                    id="next-Btn"
+                    class="slider-btn"
+                    aria-label="다음 프로젝트">
+                    →
+                </button>
+            </div>
+
+            <!-- 슬라이드 위치 표시를 위한 태그 -->
+            <div id="indicator" class="indicator"></div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+
+            <p>Email : kreideprinz913@gmail.com</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 My Profile</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
