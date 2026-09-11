@@ -1,0 +1,238 @@
+/* 기본 설정 */
+
+* {
+    box-sizing: border-box;
+    letter-spacing: 2px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding-top: 100px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+}
+
+
+/* =====Header===== */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+header h1 {
+    margin-top: 20px;
+}
+
+
+/* =====Main===== */
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 35px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+
+/* -----About----- */
+
+#hid-txt {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #222;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+
+/* -----Skills----- */
+
+#skills ul {
+    display: flex;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+#skills li {
+    padding: 8px 20px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+}
+
+
+/* -----Projects----- */
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.pjt-container {
+    width: 100%;
+    max-width: 500px;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.pjt-card {
+    padding: 35px;
+    min-height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    background-color: #f5f5f5;
+    text-align: center;
+    transition: 
+        transform 0.3 ease,
+        opacity 0.3s ease;
+}
+
+/* 프로젝트 구성 요소 */
+#pjt-Number {
+    font-size: 15px;
+    color: #222;
+}
+
+#pjt-Title {
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+#pjt-Description {
+    margin: 0;
+    color: #555;
+}
+
+#pjt-Skill {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    font-size: 15px;
+}
+
+#pjt-Link {
+    display: block;
+    margin-top: 20px;
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#pjt-Link:hover {
+    color: #666;
+}
+
+.slider-btn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    border-radius: 50%;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+/* 위치 표시 */
+.indicator {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.indicator span {
+    width: 8px;
+    height: 8px;
+    display: block;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.indicator span.active {
+    background-color: #222;
+}
+
+/* =====Footer===== */
+footer {
+    padding: 30px;
+    text-align: center;
+    color: #222;
+}
+
+/* ========================================= */
+@media (max-width: 600px) {
+    header {
+        padding: 20px;
+    }
+
+    main {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 25px 20px;
+    }
+
+    #skills ul {
+        flex-wrap: wrap;
+    }
+
+    .slider {
+        gap: 8px;
+    }
+
+    .pjt-container {
+        min-height: 330px;
+    }
+
+    .pjt-card {
+        padding: 25px 15px;
+    }
+
+    .slider-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
