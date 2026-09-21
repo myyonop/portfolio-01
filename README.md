@@ -1,10 +1,10 @@
 # HTML/CSS/JavaScript Page
 
-## 학습 목표
+## 이번 주 학습 목표
 
 HTML/CSS/JavaScript의 기초를 통한 데모 페이지 작성 및 구조 복습
 
-## 학습 내용
+## 이번 주 학습 내용
 ### HTML (Index.html)
 - 기본 문서 구조
 - Semantic Tah
