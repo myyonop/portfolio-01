@@ -1,10 +1,10 @@
 # HTML/CSS/JavaScript Page
 
-## 이번 주 학습 목표
+## 학습 목표
 
 HTML/CSS/JavaScript의 기초를 통한 데모 페이지 작성 및 구조 복습
 
-## 이번 주 학습 내용
+## 학습 내용
 ### HTML (Index.html)
 - 기본 문서 구조
 - Semantic Tah
@@ -39,3 +39,4 @@ HTML/CSS/JavaScript의 기초를 통한 데모 페이지 작성 및 구조 복�
 2026년 9월 10일 작성(HTML 코드 작성)
 2026년 9월 12일 수정(CSS 코드 작성 및 HTML 수정)
 2026년 9월 14일 수정 및 완성(HTML/CSS 태그명 변경 및 JS 코드 작성 및 수정)
+2026년 9월 21일 코드 추가(Study, Skills 구현)
