@@ -119,6 +119,45 @@
             <div id="studyList"></div>
         </section>
 
+        <section id="data-practice">
+            <h2>Data Practice</h2>
+
+            <p>
+                사용자 입력을 받아 API에 데이터를 요청하고, <br>
+                JSON 데이터를 가져와 화면에 출력
+            </p>
+
+            <!-- 사용자 입력 -->
+            <div class="input-area">
+                <label for="userInput">
+                    검색할 게시글 번호
+                </label>
+
+                <div class="input-group">
+                    <input 
+                        type="number"
+                        id="userInput"
+                        min="1"
+                        max="100"
+                        placeholder="1 ~ 100">
+                
+                    <button id="searchBtn">검색</button>
+                </div>
+            </div>
+
+            <!-- API 결과 -->
+            <div id="api-result" class="api-result">
+                <p class="result-message">게시글 번호를 입력하고 검색해보세요.</p>
+            </div>
+
+            <!-- JSON 데이터 -->
+            <div class="json-area">
+                <h3>JSON Data</h3>
+
+                <pre id="jsonData">데이터가 여기에 표시됩니다.</pre>
+            </div>
+        </section>
+
         <!-- Contact -->
         <section id="contact">
             <h2>Contact</h2>

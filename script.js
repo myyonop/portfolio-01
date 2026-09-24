@@ -167,6 +167,9 @@ nextBtn.addEventListener("click", function () {
     showProject();
 });
 
+
+
+// Study
 const studyTopics = [
 
     // 01. 기초
@@ -267,6 +270,101 @@ function createStudyList() {
 
 createStudyList();
 
+
+
+// Data Practice
+const userInput = document.querySelector("#userInput");
+const searchBtn = document.querySelector("#searchBtn");
+const apiResult = document.querySelector("#api-result");
+const jsonData = document.querySelector("#jsonData");
+
+searchBtn.addEventListener("click", function () {
+    const postNumber = userInput.value;
+
+    if (postNumber === "") {
+        apiResult.innerHTML = `
+            <p class="error">
+                게시글 번호를 입력해주세요. (1 ~ 100)
+            </p>
+        `;
+
+        jsonData.textContent = "데이터가 없습니다.";
+
+        return;
+    }
+
+    if (postNumber < 1 || postNumber > 100) {
+        apiResult.innerHTML = `
+            <p class="error">
+                1부터 100 사이의 번호를 입력해주세요.
+            </p>
+        `;
+
+        jsonData.textContent = "데이터가 없습니다.";
+
+        return;
+    }
+
+    apiResult.innerHTML = `
+        <p class="loading">
+            데이터를 가져오는 중...
+        </p>
+    `;
+
+    jsonData.textContent = "Loading...";
+
+    // API 요청
+    fetch(
+        `https://jsonplaceholder.typicode.com/posts/${postNumber}`
+    )
+        // 서버 응답을 JSON으로 변환
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error("데이터를 가져오지 못했습니다.");
+            }
+            return response.json();
+        })
+
+        // 데이터 사용
+        .then(function (data) {
+            console.log("JSON 데이터 : ", data);
+
+            apiResult.innerHTML = `
+                <span class="post-id">
+                    POST ID : ${data.id}
+                </span>
+                <h3 class="post-title">
+                    ${data.title}
+                </h3>
+                <p>
+                    ${data.body}
+                </p>
+            `;
+
+            // 원본 데이터 출력
+            jsonData.textContent = JSON.stringify(data, null, 4);
+        })
+
+        // 오류 처리
+        .catch(function (error) {
+            console.error(error);
+
+            apiResult.innerHTML = `
+                <p class="error">
+                    데이터를 가져오는 중 오류가 발생했습니다.
+                </p>
+            `;
+
+            jsonData.textContent = "API 데이터를 가져오지 못했습니다.";
+        });
+});
+
+// Enter로 검색
+userInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        searchBtn.click();
+    }
+});
 
 
 // 초기 실행 - 가장 하단에 위치
