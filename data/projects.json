@@ -1,0 +1,26 @@
+[
+    {
+        "number" : "PROJECT 01",
+        "title" : "WebDemo Page",
+        "description" : "2025년 3월 23일 웹프로그래밍 수업 중 제작",
+        "skill" : "HTML/CSS/JavaScript",
+        "link" : "https://web-programming-alpha.vercel.app/",
+        "github" : "https://github.com/myyonop/WebDEMO"
+    },
+    {
+        "number" : "PROJECT 02",
+        "title" : "WEB PROTFOLIO - 1",
+        "description" : "2025년 4월 23일 첫번째 포트폴리오 사이트 제작",
+        "skill" : "HTML/CSS/JavaScript",
+        "link" : "https://my-midterm.vercel.app/",
+        "github" : "https://github.com/myyonop/midterm2025"
+    },
+    {
+        "number": "PROJECT 03",
+        "title": "WEB PROTFOLIO - 2",
+        "description" : "2025년 6월 16일 두번째 포트폴리오 사이트 제작",
+        "skill" : "HTML/CSS/JavaScript",
+        "link" : "https://portfolio-psi-drab-14.vercel.app/",
+        "github" : "https://github.com/myyonop/Portfolio"
+    }
+]

@@ -234,15 +234,49 @@ button:hover {
 
 /* =====Study===== */
 #studyList {
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
+/* 필터 버튼 */
+.study-filter {
+    display: flex;
+    gap: 8px;
+    margin-top: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1 solid #eee;
+}
+
+.study-filter-btn {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background-color: white;
+    color: #777;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.study-filter-btn.active {
+    background-color: #222;
+    color: white;
+    border-color: #222;
+}
+
+.study-filter-btn:hover{
+    border-color: #222;
+}
+
+/* 카테고리 */
 .study-section {
-    margin-bottom: 55px;
+    margin-bottom: 60px;
 }
 
 .study-category {
-    margin: 0 0 0;
+    margin: 0;
     padding-bottom: 12px;
     border-bottom: 1px solid #222;
     font-size: 16px;
@@ -250,28 +284,74 @@ button:hover {
     letter-spacing: 0.02em;
 }
 
+/* 날짜 */
+.study-data {
+    margin: 30px 0 5px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+/* 학습 목록 */
 .study-items {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 30px;
+    flex-direction: column;
+    width: 100%;
 }
 
 .study-item {
-    padding: 17px 10px;
+    width: 100%;
+    padding: 16px 10px;
     border-bottom: 1px solid #eee;
-    font-size: 15px;
     color: #333;
     transition: 
         color 0.25s ease,
         transform 0.25s ease,
         border-color 0.25s ease;
-    cursor: default;
 }
 
 .study-item:hover {
     color: #888;
-    transform: translateY(-3px);
+    transform: translateY(3px);
     border-color: #aaa;
+}
+
+.study-title {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.study-description {
+    margin: 0;
+    font-size: 13px;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+/* 날짜별 확인 */
+.study-date-section {
+    margin-bottom: 55px;
+}
+
+.study-date-title {
+    margin: 0 0 5px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #222;
+    font-size: 16px;
+    font-weight: 600;
+    color: #222;
+}
+
+.study-item-category {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 1px;
 }
 
 
@@ -428,6 +508,7 @@ footer {
         padding: 25px 20px;
     }
 
+    /* Skills */
     #skillList {
         grid-template-columns: 1fr;
     }
@@ -436,12 +517,22 @@ footer {
         padding: 20px;
     }
 
+    /* Study */
     #study {
-        padding: 70px 0;
+        padding: 25px 20px;
     }
 
     #studyList {
-        margin-top: 35px;
+        margin-top: 30px;
+    }
+
+    .study-filter {
+        margin-top: 20px;
+    }
+
+    .study-filter-btn {
+        padding: 7px 13px;
+        font-size: 12px;
     }
 
     .study-section {
@@ -449,20 +540,22 @@ footer {
     }
 
     .study-category {
-        padding-bottom: 10px;
         font-size: 15px;
-    }
-
-    .study-items {
-        grid-template-columns: 1fr;
-        column-gap: 0;
     }
 
     .study-item {
         padding: 15px 5px;
-        font-size: 14px;
     }
 
+    .study-date-section {
+        margin-bottom: 40px;
+    }
+
+    .study-date-title {
+        font-size: 15px;
+    }
+
+    /* Projects */
     .slider {
         gap: 8px;
     }
@@ -480,6 +573,7 @@ footer {
         height: 40px;
     }
 
+    /* Data Practice */
     .input-group {
         flex-direction: column;
     }

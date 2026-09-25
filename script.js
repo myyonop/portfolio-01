@@ -15,27 +15,10 @@ moreBtn.addEventListener("click", function () {
 
 
 // Skills
-const skills = [
-    {
-        name: "HTML",
-        level: "기초",
-        description: "웹 페이지의 구조 작성"
-    },
-    {
-        name: "CSS",
-        level: "기초",
-        description: "웹 페이지의 디자인과 레이아웃 작성"
-    },
-    {
-        name: "JavaScript",
-        level: "학습 중",
-        description: "웹 페이지에 동적 기능 추가"
-    }
-];
 const skillList = document.querySelector("#skillList");
 
 // Skills 생성 함수
-function createSkills() {
+function createSkills(skills) {
     skillList.innerHTML = "";
     skills.forEach(function (skill) {
         const li = document.createElement("li");
@@ -62,39 +45,11 @@ function createSkills() {
     });
 }
 
-createSkills();
-
 
 
 // Projects Slider
-// 프로젝트 추가 시 여기에서 프로젝트 추가하기
 
-const projects = [
-    {
-        number: "PROJECT 01",
-        title: "WebDemo Page",
-        description: "2025년 3월 23일 웹프로그래밍 수업 중 제작",
-        skill: "HTML/CSS/JavaScript",
-        link: "https://web-programming-alpha.vercel.app/",
-        github: "https://github.com/myyonop/WebDEMO"
-    },
-    {
-        number: "PROJECT 02",
-        title: "WEB PROTFOLIO - 1",
-        description: "2025년 4월 23일 첫번째 포트폴리오 사이트 제작",
-        skill: "HTML/CSS/JavaScript",
-        link: "https://my-midterm.vercel.app/",
-        github: "https://github.com/myyonop/midterm2025"
-    },
-    {
-        number: "PROJECT 03",
-        title: "WEB PROTFOLIO - 2",
-        description: "2025년 6월 16일 두번째 포트폴리오 사이트 제작",
-        skill: "HTML/CSS/JavaScript",
-        link: "https://portfolio-psi-drab-14.vercel.app/",
-        github: "https://github.com/myyonop/Portfolio"
-    },
-];
+let projects = [];
 
 let currentProject = 0;
 
@@ -109,6 +64,10 @@ const nextBtn = document.querySelector("#next-Btn");
 const indicator = document.querySelector("#indicator");
 
 function showProject() {
+    if (projects.length === 0){
+        return;
+    }
+
     const project = projects[currentProject];
 
     pjtNumber.textContent = project.number;
@@ -170,106 +129,210 @@ nextBtn.addEventListener("click", function () {
 
 
 // Study
-const studyTopics = [
-
-    // 01. 기초
-    {
-        category: "01. 기초",
-        title: "HTML 기본 구조"
-    },
-    {
-        category: "01. 기초",
-        title: "Semantic Tag"
-    },
-    {
-        category: "01. 기초",
-        title: "Box Model"
-    },
-    {
-        category: "01. 기초",
-        title: "Flexbox"
-    },
-    {
-        category: "01. 기초",
-        title: "JavaScript 변수"
-    },
-    {
-        category: "01. 기초",
-        title: "Event"
-    },
-    {
-        category: "01. 기초",
-        title: "배열"
-    },
-
-    // 02. 현재 공부
-    {
-        category: "02. 현재 공부",
-        title: "DOM 조작"
-    },
-    {
-        category: "02. 현재 공부",
-        title: "배열과 객체"
-    },
-    {
-        category: "02. 현재 공부",
-        title: "함수"
-    },
-    {
-        category: "02. 현재 공부",
-        title: "조건문과 반복문"
-    },
-    {
-        category: "02. 현재 공부",
-        title: "반응형 웹 디자인"
-    }
-];
 
 const studyList = document.querySelector("#studyList");
 
-function createStudyList() {
+const categoryBtn = document.querySelector("#categoryBtn");
+const dateBtn = document.querySelector("#dateBtn");
+
+let studyTopics = [];
+
+// 항목 생성
+function createStudyItem(topic, showCategory = false) {
+    const item = document.createElement("div");
+    item.classList.add("study-item");
+
+    // 날짜별 화면에서는 카테고리 표시
+    if (showCategory) {
+        const category = document.createElement("span");
+        category.classList.add("study-item-category");
+        category.textContent = topic.category;
+        item.appendChild(category);
+    }
+    const title = document.createElement("strong");
+    title.classList.add("study-title");
+    title.textContent = topic.title;
+
+    const description = document.createElement("p");
+    description.classList.add("study-description");
+    description.textContent = topic.description;
+
+    item.appendChild(title);
+    item.appendChild(description);
+
+    return item;
+}
+
+// 카테고리별 보기
+function createCategoryView() {
     studyList.innerHTML = "";
-    
-    // 카테고리별 데이터 묶기
     const categories = {};
 
+    // 날짜별 데이터 묶기
     studyTopics.forEach(function (topic) {
         if (!categories[topic.category]) {
-            categories[topic.category] = [];
+            categories[topic.category] = {};
         }
-        categories[topic.category].push(topic);
+        if (!categories[topic.category][topic.date]) {
+            categories[topic.category][topic.date] = [];
+        }
+        categories[topic.category][topic.date].push(topic);
     });
 
-    for (const category in categories) {
-        // 카테고리
+    // 카테고리 출력
+    Object.keys(categories).forEach(function (category) {
         const categorySection = document.createElement("div");
         categorySection.classList.add("study-section");
 
         const categoryTitle = document.createElement("h3");
         categoryTitle.classList.add("study-category");
         categoryTitle.textContent = category;
-
         categorySection.appendChild(categoryTitle);
 
-        // 공부
+        Object.keys(categories[category]).forEach(
+            function (date) {
+                const items = document.createElement("div");
+                items.classList.add("study-items");
+
+                categories[category][date].forEach(
+                    function (topic) {
+                        const item = createStudyItem(topic);
+                        items.appendChild(item);
+                    }
+                );
+                categorySection.appendChild(items);
+            }
+        );
+        studyList.appendChild(categorySection);
+    });
+}
+
+// 날짜별 보기
+function createDateView() {
+    studyList.innerHTML = "";
+    const dates = {};
+
+    // 날짜별 데이터 묶기
+    studyTopics.forEach(function (topic) {
+        if (!dates[topic.date]) {
+            dates[topic.date] = [];
+        }
+        dates[topic.date].push(topic);
+    });
+
+    // 날짜 출력
+    Object.keys(dates).forEach(function (date) {
+        const dateSection = document.createElement("div");
+        dateSection.classList.add("study-date-section");
+
+        const dateTitle = document.createElement("h3");
+        dateTitle.classList.add("study-date-title");
+        dateTitle.textContent = date.replaceAll("-", ".");
+        dateSection.appendChild(dateTitle);
+
         const items = document.createElement("div");
         items.classList.add("study-items");
 
-        categories[category].forEach(function (topic) {
-            const item = document.createElement("div");
-            item.classList.add("study-item");
-            item.textContent = topic.title;
-
+        dates[date].forEach(function (topic) {
+            const item = createStudyItem(topic, true);
             items.appendChild(item);
         });
+        dateSection.appendChild(items);
+        studyList.appendChild(dateSection);
+    });
+}
 
-        categorySection.appendChild(items);
-        studyList.appendChild(categorySection);
+// 버튼 상태 변경
+function setActiveButton(button) {
+    categoryBtn.classList.remove("active");
+    dateBtn.classList.remove("active");
+    button.classList.add("active");
+}
+
+categoryBtn.addEventListener("click", function () {
+        console.log("카테고리별 버튼 클릭");
+        setActiveButton(categoryBtn);
+        createCategoryView();
+    }
+);
+
+dateBtn.addEventListener("click", function () {
+        console.log("날짜별 버튼 클릭");
+        setActiveButton(dateBtn);
+        createDateView();
+    }
+);
+
+
+
+// JSON 데이터 불러오기
+async function loadPortfolioData() {
+    try {
+        // Skills
+        const skillsResponse = await fetch("./data/skills.json");
+
+        if (!skillsResponse.ok) {
+            throw new Error(
+                "skills.json을 불러오지 못했습니다."
+            );
+        }
+
+        const skills = await skillsResponse.json();
+        createSkills(skills);
+
+        // Projects
+        const projectsResponse = await fetch("./data/projects.json");
+
+        if (!projectsResponse.ok) {
+            throw new Error(
+                "projects.json을 불러오지 못했습니다."
+            );
+        }
+
+        projects = await projectsResponse.json();
+        createIndicator();
+        showProject();
+
+        // Study
+        const studyResponse =
+        await fetch("./data/study.json");
+
+
+        if (!studyResponse.ok) {
+
+            throw new Error(
+                "study.json을 불러오지 못했습니다."
+            );
+
+        }
+
+
+        studyTopics =
+            await studyResponse.json();
+
+
+        // 처음에는 카테고리별 표시
+
+        setActiveButton(categoryBtn);
+        createCategoryView();
+    } catch (error) {
+        console.error("JSON 데이터를 불러오는 중 오류 발생 : ", error);
+
+        skillList.innerHTML = `
+            <p class="error">
+                Skills 데이터를 불러오지 못했습니다.
+            </p>
+        `;
+
+        studyList.innerHTML = `
+            <p class="error">
+                Study 데이터를 불러오지 못했습니다.
+            </p>
+        `;
     }
 }
 
-createStudyList();
-
+loadPortfolioData();
 
 
 // Data Practice

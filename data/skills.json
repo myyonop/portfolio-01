@@ -1,0 +1,17 @@
+[
+    {
+        "name" : "HTML",
+        "level" : "기초",
+        "description" : "웹 페이지의 구조 작성"
+    },
+    {
+        "name" : "CSS",
+        "level" : "기초",
+        "description" : "웹 페이지의 디자인과 레이아웃 작성"
+    },
+    {
+        "name" : "JavaScript",
+        "level" : "학습 중",
+        "description" : "웹 페이지에 동적 기능 추가"
+    }
+]
